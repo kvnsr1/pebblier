@@ -12,8 +12,51 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "resources/images"
 S = 8
-SERIF = ROOT / "assets/fonts/Tinos-Bold.ttf"
+BRAND = ROOT / "assets/fonts/Tinos-Bold.ttf"
 SANS = ROOT / "assets/fonts/Abel-Regular.ttf"
+
+# Original tiny sans glyphs. Each target gets its own native pixel grid, so
+# AUTOMATIC and SWISS / MADE never depend on subpixel font strokes.
+SMALL = {
+    "A": ["010","101","111","101","101"],
+    "U": ["101","101","101","101","111"],
+    "T": ["111","010","010","010","010"],
+    "O": ["111","101","101","101","111"],
+    "M": ["101","111","111","101","101"],
+    "I": ["1","1","1","1","1"],
+    "C": ["111","100","100","100","111"],
+    "S": ["111","100","111","001","111"],
+    "W": ["101","101","101","111","101"],
+    "D": ["110","101","101","101","110"],
+    "E": ["111","100","110","100","111"],
+}
+LARGE = {
+    "A": ["01110","10001","10001","11111","10001","10001","10001"],
+    "U": ["10001","10001","10001","10001","10001","10001","01110"],
+    "T": ["11111","00100","00100","00100","00100","00100","00100"],
+    "O": ["01110","10001","10001","10001","10001","10001","01110"],
+    "M": ["10001","11011","10101","10101","10001","10001","10001"],
+    "I": ["111","010","010","010","010","010","111"],
+    "C": ["01111","10000","10000","10000","10000","10000","01111"],
+    "S": ["01111","10000","10000","01110","00001","00001","11110"],
+    "W": ["10001","10001","10001","10101","10101","10101","01010"],
+    "D": ["11110","10001","10001","10001","10001","10001","11110"],
+    "E": ["11111","10000","10000","11110","10000","10000","11111"],
+}
+
+
+def pixel_label(image, text, y, large=False, left=None):
+    glyphs = LARGE if large else SMALL
+    width = sum(len(glyphs[c][0]) for c in text) + len(text)-1
+    x = (image.width//S-width)//2 if left is None else left
+    draw = ImageDraw.Draw(image)
+    for char in text:
+        glyph = glyphs[char]
+        for row, bits in enumerate(glyph):
+            for col, bit in enumerate(bits):
+                if bit == "1":
+                    draw.rectangle(((x+col)*S,(y+row)*S,(x+col+1)*S-1,(y+row+1)*S-1),fill=0)
+        x += len(glyph[0])+1
 
 
 def roman_polygons(text):
@@ -53,8 +96,8 @@ def numeral(draw, text, box, orientation=0, shear=0):
     ymin, ymax = min(p[1] for p in points), max(p[1] for p in points)
     x, y, w, h = box
     for poly in shapes:
-        draw.polygon([((x + (px-xmin)/(xmax-xmin)*w)*S,
-                       (y + (py-ymin)/(ymax-ymin)*h)*S) for px, py in poly], fill=0)
+        draw.polygon([(round((x + (px-xmin)/(xmax-xmin)*w)*S),
+                       round((y + (py-ymin)/(ymax-ymin)*h)*S)) for px, py in poly], fill=0)
 
 
 def lettering(image, text, box, font_path, tracking=0):
@@ -98,8 +141,8 @@ def dial(width, height, mono):
         ("II", (123, 32, 20, 32), 90, -.6),
         ("III", (123, 72, 20, 25), 90, 0),
         ("IIII", (123, 103, 20, 43), 90, .6),
-        ("VII", (15, 136, 35, 28), 180, -.45),
-        ("V", (99, 136, 23, 28), 180, .5),
+        ("VII", (15, 136, 35, 24), 180, -.45),
+        ("V", (99, 136, 23, 24), 180, .5),
     ]
     for text, b, orient, shear in placements:
         numeral(draw, text, box(*b), orient, shear)
@@ -125,18 +168,19 @@ def dial(width, height, mono):
         td.line(tuple(round(v*S) for v in (cx+ri*dx,cy+ri*dy,cx+r*dx,cy+r*dy)),
                 fill=0, width=round((3.5 if minute%5==0 else .65)*k*S))
     image.paste(ticks, (0, 0), mask)
-    draw = ImageDraw.Draw(image)
-    for rect, radius in [(outer, 3*k), (inner, 2*k)]:
-        draw.rounded_rectangle(tuple(round(v*S) for v in rect), radius=round(radius*S),
-                               outline=0, width=max(S, round(.65*k*S)))
-
-    lettering(image, "PEBBLIER", box(48, 47, 49, 7), SERIF)
-    lettering(image, "AUTOMATIC", box(53, 109, 39, 5.5), SANS, tracking=12)
-    lettering(image, "SWISS", box(49, 162, 13, 4), SANS, tracking=5)
-    lettering(image, "MADE", box(83, 162, 13, 4), SANS, tracking=5)
+    large = width == 200
+    # Match the reference's restrained wordmark: about half the inner railway
+    # width, with fine serifs and a low cap height rather than slab lettering.
+    brand_w, brand_h = (64,8) if large else (46,6)
+    brand_x, brand_y = (width-brand_w)//2, round(46*yk)
+    lettering(image, "PEBBLIER", (brand_x,brand_y,brand_w,brand_h), BRAND)
+    pixel_label(image, "AUTOMATIC", round(109*yk), large)
+    label_y = height - (8 if large else 6)
+    pixel_label(image, "SWISS", label_y, large, left=round(63*k)-(30 if large else 19))
+    pixel_label(image, "MADE", label_y, large, left=round(81*k)+(4 if large else 3))
     # Tiny signature lives in the open diagonal of VII, as in the reference.
     signature = Image.new("L", (22*S, 5*S), 255)
-    lettering(signature, "PEBBLIER", (0, 0, 22, 4), SERIF)
+    lettering(signature, "PEBBLIER", (0, 0, 22, 4), BRAND)
     signature = signature.rotate(56, expand=True, resample=Image.Resampling.BICUBIC, fillcolor=255)
     # Composite ink only: the rotated signature's white bounding rectangle
     # must not erase the nearby VII strokes.
@@ -148,12 +192,26 @@ def dial(width, height, mono):
         draw.rounded_rectangle((round((x+offset*k)*S), round((y+offset*k)*S),
                                 round((x+w-offset*k)*S), round((y+h-offset*k)*S)),
                                radius=round(max(.3,1.7-offset*.5)*k*S), fill=shade)
-    image = image.resize((width, height), Image.Resampling.LANCZOS)
+    # Coverage reduction followed by a hard ink boundary removes ringing and
+    # gray halos from the geometric ink. Preserve subtle serif coverage and
+    # the intentional date bevel on color displays.
+    coverage = image.resize((width, height), Image.Resampling.BOX)
+    image = coverage.point(lambda v: 255 if v >= 143 else 0)
+    draw = ImageDraw.Draw(image)
+    # Native outlines have equal one-pixel weight on all four sides. Drawing
+    # these after reduction avoids an inward bias on the right/bottom edges.
+    for rect, radius in [(outer,round(3*k)),(inner,round(2*k))]:
+        draw.rounded_rectangle(tuple(round(v) for v in rect),radius=radius,outline=0,width=1)
     if mono:
-        # No dithering: crisp black serifs against a clean white field.
-        image = image.point(lambda v: 255 if v >= 155 else 0).convert("1")
+        image = image.convert("1")
     else:
-        image = image.point(lambda v: round(v/85)*85).convert("P")
+        rect = (brand_x,brand_y,brand_x+brand_w,brand_y+brand_h)
+        wordmark = coverage.crop(rect).point(lambda v: round(v/85)*85)
+        image.paste(wordmark,rect[:2])
+        rect = (math.floor(x),math.floor(y),math.ceil(x+w)+1,math.ceil(y+h)+1)
+        bevel = coverage.crop(rect).point(lambda v: round(v/85)*85)
+        image.paste(bevel,rect[:2])
+        image = image.convert("P")
     return image
 
 
@@ -163,10 +221,9 @@ def digits(width, mono):
     image = Image.new("L", (cell_w*10*S, cell_h*S), 255)
     for n in range(10):
         lettering(image, str(n), (n*cell_w+.5*k, .5*k, cell_w-k, cell_h-k), SANS)
-    image = image.resize((cell_w*10, cell_h), Image.Resampling.LANCZOS)
-    if mono:
-        return image.point(lambda v: 255 if v >= 155 else 0).convert("1")
-    return image.point(lambda v: round(v/85)*85).convert("P")
+    image = image.resize((cell_w*10, cell_h), Image.Resampling.BOX)
+    image = image.point(lambda v: 255 if v >= 143 else 0)
+    return image.convert("1") if mono else image.convert("P")
 
 
 def main():
