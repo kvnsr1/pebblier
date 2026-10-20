@@ -120,7 +120,9 @@ def dial(width, height, mono):
         dx, dy = math.sin(angle), -math.cos(angle)
         r = half / max(abs(dx), abs(dy))
         ri = (half-inset) / max(abs(dx), abs(dy))
-        td.line(((cx+ri*dx)*S, (cy+ri*dy)*S, (cx+r*dx)*S, (cy+r*dy)*S),
+        # Snap before Pillow sees the coordinates: ARM/x86 trig ulps near an
+        # integer endpoint otherwise choose different raster pixels.
+        td.line(tuple(round(v*S) for v in (cx+ri*dx,cy+ri*dy,cx+r*dx,cy+r*dy)),
                 fill=0, width=round((3.5 if minute%5==0 else .65)*k*S))
     image.paste(ticks, (0, 0), mask)
     draw = ImageDraw.Draw(image)
