@@ -59,7 +59,9 @@ def numeral(draw, text, box, orientation=0, shear=0):
 
 def lettering(image, text, box, font_path, tracking=0):
     """Fit cap-height to a deliberate box; no dependence on font baselines."""
-    font = ImageFont.truetype(str(font_path), 96)
+    # Linux wheels can enable optional RAQM shaping while macOS wheels use
+    # BASIC. Explicit layout keeps glyph metrics identical on both systems.
+    font = ImageFont.truetype(str(font_path), 96, layout_engine=ImageFont.Layout.BASIC)
     widths = [font.getlength(c) for c in text]
     bounds = font.getbbox(text)
     mask = Image.new("L", (math.ceil(sum(widths) + tracking*(len(text)-1))+4, 140), 0)
