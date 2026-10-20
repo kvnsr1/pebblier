@@ -14,11 +14,11 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.1.0
         with:
           node-version: '22'
-      - uses: astral-sh/setup-uv@v6
+      - uses: astral-sh/setup-uv@v10.3.0
         with:
           version: '0.9.3'
       - name: Install SDK dependencies
@@ -29,8 +29,7 @@ jobs:
           pebble sdk install 4.33.1
       - name: Verify asset regeneration and hand math
         run: |
-          uv run --python 3.13 --with-requirements requirements-assets.txt python scripts/generate_assets.py
-          git diff --exit-code -- resources/images
+          uv run --python 3.13 --with-requirements requirements-assets.txt python scripts/check_assets.py
           sh scripts/test.sh
       - name: Build all five platforms with the real local clock
         run: pebble build

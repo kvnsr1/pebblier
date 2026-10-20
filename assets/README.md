@@ -12,3 +12,5 @@ Fonts are bundled so regeneration does not depend on locally installed fonts or 
 Both are distributed under the SIL Open Font License 1.1. Their license files are adjacent to the fonts. The fonts themselves are not loaded on the watch: only the resulting compact bitmap resources are packaged.
 
 Resource suffixes are SDK tags: `~144w~color` selects Basalt, `~144w~bw` selects Aplite/Diorite/Flint, and `~200w~color` selects Emery. The SDK chooses the smallest compatible bitmap memory format automatically. Each resource is drawn at its target resolution; Pebble's bitmap API never scales it.
+
+`scripts/check_assets.py` regenerates and compares decoded RGB pixels and dimensions exactly. PNG/zlib encoders can produce different compressed bytes on macOS and Linux even when their pixels are identical; the CI check therefore validates artwork rather than compression output.

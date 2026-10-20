@@ -66,6 +66,7 @@ The wordmark uses **Tinos Bold** and the secondary lettering/date use **Abel**, 
 
 ```sh
 uv run --python 3.13 --with-requirements requirements-assets.txt python scripts/generate_assets.py
+uv run --python 3.13 --with-requirements requirements-assets.txt python scripts/check_assets.py
 sh scripts/test.sh
 pebble build
 python3 scripts/check_bundle.py build/pebblier.pbw
