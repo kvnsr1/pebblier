@@ -16,15 +16,15 @@ All **60 cases** were installed, captured, and visually reviewed: **5 platforms 
 
 | Target | Individual captures | Enlarged contact sheet | Result |
 | --- | --- | --- | --- |
-| Basalt | 12 at 144 × 168 | [Basalt matrix](screenshots/basalt-matrix.png) | Passed |
-| Aplite | 12 at 144 × 168 | [Aplite matrix](screenshots/aplite-matrix.png) | Passed |
-| Diorite | 12 at 144 × 168 | [Diorite matrix](screenshots/diorite-matrix.png) | Passed |
-| Emery | 12 at 200 × 228 | [Emery matrix](screenshots/emery-matrix.png) | Passed |
-| Flint | 12 at 144 × 168 | [Flint matrix](screenshots/flint-matrix.png) | Passed |
+| Basalt | 6,684 B | 2,727 B | 62,809 B |
+| Aplite | 7,427 B | 2,763 B | 21,813 B |
+| Diorite | 5,659 B | 2,763 B | 62,773 B |
+| Emery | 7,936 B | 2,727 B | 128,345 B |
+| Flint | 5,659 B | 2,763 B | 62,773 B |
 
 [Capture manifest](screenshots/manifest.json) identifies the platform, exact fixture time/date, filename, and capture source. Individual PNGs are uncorrected SDK screenshots at native resolution. Contact sheets use integer nearest-neighbor enlargement and labels; they are compositions of the captured images, not simulated renderings.
 
-The visual fixtures are compile-time overrides in the same C renderer. This makes the requested positions deterministic despite clock advancement and Emery emulator clock behavior. The fixture code is absent from normal builds. `validate_emulators.py` restores a production PBW even if a capture fails. `--resume` retains captures from an interrupted run; use a complete fresh run after visual changes. All monochrome cases were recaptured after strengthening the hand silhouettes; color rendering was unchanged by that platform-conditional correction.
+The visual fixtures are compile-time overrides in the same C renderer. This makes the requested positions deterministic despite clock advancement and Emery emulator clock behavior. The fixture code is absent from normal builds. `validate_emulators.py` restores a production PBW even if a capture fails. `--resume` retains captures from an interrupted run; use a complete fresh run after visual changes. All 60 committed captures use the final artwork, including pixel-aligned railway ticks and the signature composited without erasing VII.
 
 Review checked railway alignment and line weights, wordmark placement, centered one-/two-digit dates, exact pivot alignment, fractional hour progression, long hand clearance, and hand overlap at 12:00. The monochrome hour/minute silhouettes are separated from black numerals with white outer bevels. The tiny signature and bottom text are retained with optical compensation, with better readability on Emery.
 
@@ -34,11 +34,11 @@ The SDK reports these default-build values. Runtime allocations for the cached d
 
 | Platform | Resources | Linked RAM footprint | Heap available before runtime allocations |
 | --- | ---: | ---: | ---: |
-| Basalt | 6,669 B | 2,727 B | 62,809 B |
+| Basalt | 6,684 B | 2,727 B | 62,809 B |
 | Aplite | 7,427 B | 2,763 B | 21,813 B |
-| Diorite | 5,653 B | 2,763 B | 62,773 B |
-| Emery | 7,895 B | 2,727 B | 128,345 B |
-| Flint | 5,653 B | 2,763 B | 62,773 B |
+| Diorite | 5,659 B | 2,763 B | 62,773 B |
+| Emery | 7,936 B | 2,727 B | 128,345 B |
+| Flint | 5,659 B | 2,763 B | 62,773 B |
 
 The resource difference between Aplite and newer monochrome targets comes from the SDK's bitmap encoding. The static color dial is cached in a palettized bitmap rather than a full-color framebuffer; no fctx scratch buffer is allocated. Resources are allocated once at load, reused on ticks, and destroyed on unload.
 

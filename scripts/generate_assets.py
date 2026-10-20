@@ -138,7 +138,9 @@ def dial(width, height, mono):
     signature = Image.new("L", (22*S, 5*S), 255)
     lettering(signature, "PEBBLIER", (0, 0, 22, 4), SERIF)
     signature = signature.rotate(56, expand=True, resample=Image.Resampling.BICUBIC, fillcolor=255)
-    image.paste(signature, (round(34*k*S), round(141*yk*S)))
+    # Composite ink only: the rotated signature's white bounding rectangle
+    # must not erase the nearby VII strokes.
+    image.paste(0, (round(34*k*S), round(141*yk*S)), signature.point(lambda v: 255-v))
     draw = ImageDraw.Draw(image)
     x, y, w, h = box(63, 133, 18, 28)
     # Nested frame is graphic; date interior and digit are drawn at runtime.
