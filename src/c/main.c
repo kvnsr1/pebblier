@@ -68,7 +68,7 @@ static void sword_draw(GContext *ctx, Sword *sword, int32_t angle) {
 #if defined(PBL_COLOR)
   graphics_context_set_fill_color(ctx, GColorCobaltBlue);
   gpath_draw_filled(ctx, sword->facet);
-  graphics_context_set_stroke_color(ctx, GColorPictonBlue);
+  graphics_context_set_stroke_color(ctx, GColorDukeBlue);
 #else
   graphics_context_set_stroke_color(ctx, GColorBlack);
 #endif

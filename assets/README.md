@@ -7,9 +7,11 @@ Fonts are bundled so regeneration does not depend on locally installed fonts or 
 | File | Use | Upstream |
 | --- | --- | --- |
 | `fonts/Tinos-Bold.ttf` | PEBBLIER and tiny diagonal signature | [Tinos](https://github.com/googlefonts/tinos), retrieved from [Google Fonts](https://github.com/google/fonts/tree/main/ofl/tinos) |
-| `fonts/Abel-Regular.ttf` | AUTOMATIC, SWISS / MADE, date atlas | [Google Fonts Abel](https://github.com/google/fonts/tree/main/ofl/abel) |
+| `fonts/Abel-Regular.ttf` | Date atlas | [Google Fonts Abel](https://github.com/google/fonts/tree/main/ofl/abel) |
 
 Both are distributed under the SIL Open Font License 1.1. Their license files are adjacent to the fonts. The fonts themselves are not loaded on the watch: only the resulting compact bitmap resources are packaged.
+
+AUTOMATIC and SWISS / MADE use original 3 × 5 pixel glyphs at 144 pixels wide and 5 × 7 pixel glyphs on Emery. The generator defines these patterns directly. The main wordmark occupies 46 × 6 pixels or 64 × 8 pixels, retaining a finer serif style and ample surrounding white space.
 
 Resource suffixes are SDK tags: `~144w~color` selects Basalt, `~144w~bw` selects Aplite/Diorite/Flint, and `~200w~color` selects Emery. The SDK chooses the smallest compatible bitmap memory format automatically. Each resource is drawn at its target resolution; Pebble's bitmap API never scales it.
 

@@ -9,11 +9,14 @@ The taller display is accommodated through numeral placement and vertical spacin
 | Pivot | (72, 79) | (100, 107) |
 | Outer railway | (24, 31) to (120, 127) | (33, 40) to (167, 174) |
 | Inner railway | (28, 35) to (116, 123) | (39, 46) to (161, 168) |
+| PEBBLIER wordmark | (49, 46), 46 × 6 | (68, 62), 64 × 8 |
 | Date outer frame | (63, 133), 18 × 28 | (87.5, 180.5), 25 × 38 |
 | Hour length | 45 px | 63 px |
 | Minute / seconds length | 63 px | 88 px |
 
-Sixty rays intersect both nested squares to create the diagonal minute marks. Every fifth mark is heavier. Rounded masks clip the ticks to the railway band and clean one-pixel outlines define the rails. Drawings are supersampled at 8× then separately quantized to four grayscale levels or 1-bit black/white. Small lettering receives optical stroke compensation before reduction.
+Sixty rays intersect both nested squares to create the diagonal minute marks. Every fifth mark is heavier. Rounded masks clip the ticks to the railway band. Geometry is snapped to the 8× construction grid, reduced with box coverage, and thresholded to full black/white ink without resampling halos. The two railway outlines are drawn afterward at native resolution so all four sides have equal one-pixel weight. Color displays retain four grayscale levels only in the wordmark and beveled date frame.
+
+The main wordmark uses Tinos's fine serif forms and occupies about half the inner railway width, matching the original reference's quieter branding. Six-pixel caps at 144 pixels and eight-pixel caps on Emery retain readable counters. Secondary labels use original native pixel glyphs with consistent one-pixel strokes. The bottom VII/V finish above a dedicated SWISS / MADE baseline, avoiding merged lettering. Date digits use compensated Abel strokes and full black/white coverage.
 
 The hands use fixed-point native paths with blue shaded facets on color displays. On monochrome displays black swords have thin white bevels so overlapping shapes can be distinguished. A thin seconds hand and a wider opposite counterweight reproduce the unusual rear weight in the supplied reference. The lower pivot ring, upper blue cap, and light pin are drawn independently.
 
