@@ -1,0 +1,46 @@
+name: Build Pebblier
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.9.3'
+      - name: Install SDK dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libpng-dev libsdl2-2.0-0 libglib2.0-0t64 libpixman-1-0 libsndio7.0
+          uv tool install --python 3.13 pebble-tool==5.0.40
+          pebble sdk install 4.33.1
+      - name: Verify asset regeneration and hand math
+        run: |
+          uv run --python 3.13 --with-requirements requirements-assets.txt python scripts/generate_assets.py
+          git diff --exit-code -- resources/images
+          sh scripts/test.sh
+      - name: Build all five platforms with the real local clock
+        run: pebble build
+      - name: Check bundle contents
+        run: python3 scripts/check_bundle.py build/pebblier.pbw
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Pebblier-${{ github.sha }}
+          path: |
+            build/pebblier.pbw
+            docs/screenshots/
+          if-no-files-found: error
+          retention-days: 90

@@ -1,0 +1,422 @@
+[
+  {
+    "platform": "basalt",
+    "time": "10:10:10",
+    "day": 1,
+    "file": "basalt-101010-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "10:10:10",
+    "day": 1,
+    "file": "aplite-101010-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "10:10:10",
+    "day": 1,
+    "file": "diorite-101010-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "10:10:10",
+    "day": 1,
+    "file": "emery-101010-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "10:10:10",
+    "day": 1,
+    "file": "flint-101010-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "basalt",
+    "time": "10:10:10",
+    "day": 18,
+    "file": "basalt-101010-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "10:10:10",
+    "day": 18,
+    "file": "aplite-101010-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "10:10:10",
+    "day": 18,
+    "file": "diorite-101010-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "10:10:10",
+    "day": 18,
+    "file": "emery-101010-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "10:10:10",
+    "day": 18,
+    "file": "flint-101010-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "basalt",
+    "time": "10:10:10",
+    "day": 31,
+    "file": "basalt-101010-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "10:10:10",
+    "day": 31,
+    "file": "aplite-101010-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "10:10:10",
+    "day": 31,
+    "file": "diorite-101010-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "10:10:10",
+    "day": 31,
+    "file": "emery-101010-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "10:10:10",
+    "day": 31,
+    "file": "flint-101010-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "basalt",
+    "time": "03:00:00",
+    "day": 1,
+    "file": "basalt-030000-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "03:00:00",
+    "day": 1,
+    "file": "aplite-030000-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "03:00:00",
+    "day": 1,
+    "file": "diorite-030000-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "03:00:00",
+    "day": 1,
+    "file": "emery-030000-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "03:00:00",
+    "day": 1,
+    "file": "flint-030000-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "basalt",
+    "time": "03:00:00",
+    "day": 18,
+    "file": "basalt-030000-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "03:00:00",
+    "day": 18,
+    "file": "aplite-030000-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "03:00:00",
+    "day": 18,
+    "file": "diorite-030000-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "03:00:00",
+    "day": 18,
+    "file": "emery-030000-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "03:00:00",
+    "day": 18,
+    "file": "flint-030000-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "basalt",
+    "time": "03:00:00",
+    "day": 31,
+    "file": "basalt-030000-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "03:00:00",
+    "day": 31,
+    "file": "aplite-030000-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "03:00:00",
+    "day": 31,
+    "file": "diorite-030000-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "03:00:00",
+    "day": 31,
+    "file": "emery-030000-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "03:00:00",
+    "day": 31,
+    "file": "flint-030000-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "basalt",
+    "time": "06:30:45",
+    "day": 1,
+    "file": "basalt-063045-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "06:30:45",
+    "day": 1,
+    "file": "aplite-063045-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "06:30:45",
+    "day": 1,
+    "file": "diorite-063045-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "06:30:45",
+    "day": 1,
+    "file": "emery-063045-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "06:30:45",
+    "day": 1,
+    "file": "flint-063045-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "basalt",
+    "time": "06:30:45",
+    "day": 18,
+    "file": "basalt-063045-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "06:30:45",
+    "day": 18,
+    "file": "aplite-063045-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "06:30:45",
+    "day": 18,
+    "file": "diorite-063045-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "06:30:45",
+    "day": 18,
+    "file": "emery-063045-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "06:30:45",
+    "day": 18,
+    "file": "flint-063045-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "basalt",
+    "time": "06:30:45",
+    "day": 31,
+    "file": "basalt-063045-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "06:30:45",
+    "day": 31,
+    "file": "aplite-063045-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "06:30:45",
+    "day": 31,
+    "file": "diorite-063045-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "06:30:45",
+    "day": 31,
+    "file": "emery-063045-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "06:30:45",
+    "day": 31,
+    "file": "flint-063045-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "basalt",
+    "time": "12:00:00",
+    "day": 1,
+    "file": "basalt-120000-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "12:00:00",
+    "day": 1,
+    "file": "aplite-120000-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "12:00:00",
+    "day": 1,
+    "file": "diorite-120000-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "12:00:00",
+    "day": 1,
+    "file": "emery-120000-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "12:00:00",
+    "day": 1,
+    "file": "flint-120000-01.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "basalt",
+    "time": "12:00:00",
+    "day": 18,
+    "file": "basalt-120000-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "12:00:00",
+    "day": 18,
+    "file": "aplite-120000-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "12:00:00",
+    "day": 18,
+    "file": "diorite-120000-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "12:00:00",
+    "day": 18,
+    "file": "emery-120000-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "12:00:00",
+    "day": 18,
+    "file": "flint-120000-18.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "basalt",
+    "time": "12:00:00",
+    "day": 31,
+    "file": "basalt-120000-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "aplite",
+    "time": "12:00:00",
+    "day": 31,
+    "file": "aplite-120000-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "diorite",
+    "time": "12:00:00",
+    "day": 31,
+    "file": "diorite-120000-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "emery",
+    "time": "12:00:00",
+    "day": 31,
+    "file": "emery-120000-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  },
+  {
+    "platform": "flint",
+    "time": "12:00:00",
+    "day": 31,
+    "file": "flint-120000-31.png",
+    "source": "QEMU, compile-time clock fixture"
+  }
+]
