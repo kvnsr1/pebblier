@@ -1,0 +1,11 @@
+{
+  "platform": "basalt",
+  "build": "production local clock, no fixture defines",
+  "clock_input": "2026-10-31T23:59:54Z",
+  "date_before": 31,
+  "date_after": 1,
+  "assertions": [
+    "date crops match 31 and 1",
+    "hands advance with system ticks"
+  ]
+}

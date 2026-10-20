@@ -1,0 +1,24 @@
+{
+  "name": "pebblier",
+  "version": "1.0.0",
+  "author": "kvnsr1",
+  "description": "A native square railway dial with oversized Roman numerals and blue sword hands.",
+  "license": "MIT",
+  "private": true,
+  "keywords": ["pebble-app", "watchface", "analog"],
+  "dependencies": {},
+  "pebble": {
+    "displayName": "Pebblier",
+    "uuid": "bf7d215f-a672-46a5-bc65-346930db9bf7",
+    "sdkVersion": "3",
+    "targetPlatforms": ["basalt", "aplite", "diorite", "emery", "flint"],
+    "watchapp": {"watchface": true},
+    "resources": {
+      "media": [
+        {"type": "bitmap", "name": "DIAL", "file": "images/dial.png"},
+        {"type": "bitmap", "name": "DIGITS", "file": "images/digits.png"},
+        {"type": "bitmap", "name": "MENU_ICON", "file": "images/menu_icon.png", "menuIcon": true}
+      ]
+    }
+  }
+}
